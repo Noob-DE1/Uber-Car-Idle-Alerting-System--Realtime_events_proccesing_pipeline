@@ -5,6 +5,10 @@ __pycache__/
 *.txt
 # C extensions
 *.so
+*.terraform
+*.tfstate
+*.lock*
+*terraform.tfstate.backup
 
 # Distribution / packaging
 .Python
