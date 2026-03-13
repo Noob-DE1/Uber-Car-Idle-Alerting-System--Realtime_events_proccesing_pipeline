@@ -1,5 +1,5 @@
 import json
-import datetime
+from datetime import datetime
 import math
 import apache_beam as beam
 from apache_beam.options.pipeline_options import PipelineOptions , StandardOptions
@@ -77,12 +77,12 @@ def run():
     window_period = opts.windowPeriod
 
     # your fixed temp bucket (could also be a VP if you wish)
-    temp_loc = "gs:project-a48dc085-0e8c-4a6e-9ca-dataflow-temp/"
+    temp_loc = "gs://project-a48dc085-0e8c-4a6e-9ca-dataflow-temp/temp"
 
     with beam.Pipeline(options=opts) as p:
         raw = (
             p
-            | "ReadPubSub" >> ReadFromPubSub(topic=input_topic.get())
+            | "ReadPubSub" >> ReadFromPubSub(topic=input_topic)
             | "ParseJSON"  >> beam.Map(parse)
         )
 
