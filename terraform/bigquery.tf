@@ -13,16 +13,24 @@ resource "google_bigquery_table" "car_events_table" {
 
   schema = jsonencode([
     {
-      name = "car_id"
-      type = "STRING"
-    },
-    {
-      name = "location"
+      name = "cab_id"
       type = "STRING"
     },
     {
       name = "timestamp"
       type = "TIMESTAMP"
+    },
+    {
+      name = "lat"
+      type = "FLOAT"
+    },
+    {
+      name = "lon"
+      type = "FLOAT"
+    },
+    {
+      name = "speed"
+      type = "FLOAT"
     }
   ])
 }
@@ -36,16 +44,20 @@ resource "google_bigquery_table" "alerts_table" {
 
   schema = jsonencode([
     {
-      name = "car_id"
+      name = "cab_id"
       type = "STRING"
     },
     {
-      name = "idle_duration"
-      type = "INTEGER"
+      name = "window_start"
+      type = "TIMESTAMP"
     },
     {
-      name = "alert_time"
+      name = "window_end"
       type = "TIMESTAMP"
+    },
+    {
+      name = "distance_m"
+      type = "FLOAT64"
     }
   ])
 }
